@@ -14,8 +14,6 @@ class RestaurantPolicy < ApplicationPolicy
   end
 
   def edit?
-    # user # current user
-    # record # instance of object that we are displaying (@restaurant)
     owner? || admin?
   end
 
@@ -30,6 +28,9 @@ class RestaurantPolicy < ApplicationPolicy
   private
 
   def owner?
+    # user: current user
+    # record: instance of object that we are authorizing (authorize @restaurant)
+    # record is the same as @restaurant
     record.user == user
   end
 
